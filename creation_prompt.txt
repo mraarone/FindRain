@@ -1,0 +1,64 @@
+Create a Production-Ready Financial Data Platform with AI Integration and Agent-Based Architecture
+Design and implement a comprehensive financial data platform with the following components:
+Core Requirements:
+1. Financial Data API
+* Multi-source data aggregation (YFinance, Robin Stocks, Charles Schwab, SoFi, IBKR)
+* Intelligent failover and source health monitoring
+* Endpoints: quotes, historical prices, technical indicators, portfolio analysis, news, screening, crypto, options
+* Real-time WebSocket streaming
+* Rate limiting by tier (Basic: 100/min, Premium: 1000/min, Enterprise: 10000/min)
+2. Model Context Protocol (MCP)
+* Standardized tool definitions with categories (market data, technical analysis, portfolio, news, etc.)
+* Parameter validation and type checking
+* Tool templates and documentation generation
+* News aggregation with timestamp tracking (published_at vs retrieved_at)
+3. AI Assistant Integration
+* Multiple models: Claude (long analysis), ChatGPT (balanced), Gemini (web/YouTube search), Grok (social sentiment)
+* Intelligent model selection based on query type
+* Fallback mechanisms between models
+* Tool-aware assistants with automatic tool selection
+4. Data Management
+* Persistence: All downloaded data and user interactions must be logged/persisted
+* Caching: Load cache from disk before attempting downloads
+* Data Granularity: Download maximum available granularity (1s if available) for entire market hours
+* Aggregation: Aggregate to requested period after download
+* TimescaleDB: Use for rapid time-series data retrieval and analysis
+* Smart Downloads: Only download if data doesn't exist for those market hours
+5. Agent-Based Architecture
+* Tool Creation Agent: Creates, develops, and debugs MCP tools as needed
+* Agent Creation Agent: Creates new agents, generates features, deconflicts with existing agents, writes/tests/debugs code
+* Orchestrator Agent: Aware of all agents, routes queries, coordinates agent activities
+* Registries: Maintain tool registry and agent registry
+* Communication:
+   * Asynchronous messaging between User ↔ AI Assistant ↔ Orchestrator ↔ Agents
+   * Inter-agent communication as needed
+   * Event-driven activation (websocket data, webhooks, messages)
+* Tool Awareness: All agents access tools through registry
+6. Infrastructure Components
+* Advanced caching (Redis + disk, multiple strategies)
+* Security middleware (API keys, JWT, rate limiting)
+* Monitoring and analytics system
+* Database migrations with partitioning
+* Docker/Kubernetes deployment configs
+* Client SDKs (Python, TypeScript/JavaScript)
+7. Example Applications
+* Trading bot with technical analysis and AI decisions
+* Web dashboard with real-time charts
+* Portfolio analyzer
+* News monitoring system
+Technical Implementation Details:
+1. Flask-based API with async support
+2. Redis for caching and rate limiting
+3. PostgreSQL with TimescaleDB extension for time-series data
+4. WebSocket server for real-time streaming
+5. Prometheus/Grafana for monitoring
+6. OpenAPI specification
+7. Comprehensive test suite
+Key Features to Emphasize:
+1. Production-ready with proper error handling, logging, monitoring
+2. Scalable architecture with horizontal scaling support
+3. Secure with multiple authentication levels and encryption
+4. Intelligent data source routing with automatic failover
+5. Efficient with smart caching and data aggregation
+6. Extensible through agent and tool creation capabilities
+Please provide complete, production-ready code for all components, ensuring the system can handle high-volume requests, provides accurate financial data, and enables sophisticated AI-powered analysis. The agent system should be fully autonomous, capable of extending its own capabilities as needed.
