@@ -156,5 +156,3 @@ def _calculate_sentiment_score(sentiment: float) -> str:
         return 'Negative'
     else:
         return 'Very Negative'
-
-

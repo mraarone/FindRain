@@ -163,5 +163,3 @@ async def search_symbols():
     except Exception as e:
         logger.error(f"Error searching symbols: {e}")
         return jsonify({'error': 'Internal server error'}), 500
-
-

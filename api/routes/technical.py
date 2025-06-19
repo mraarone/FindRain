@@ -184,5 +184,3 @@ def calculate_stochastic(df: pd.DataFrame, period: int = 14) -> dict:
             for ts in k_percent.index
         ]
     }
-
-

@@ -187,5 +187,3 @@ async def add_holding(portfolio_id: str):
         db.session.rollback()
         logger.error(f"Error adding holding: {e}")
         return jsonify({'error': 'Internal server error'}), 500
-
-
